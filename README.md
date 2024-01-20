@@ -1,9 +1,9 @@
-* ## Generate ECDSA SSH key with 521 bits:
+## Generate ECDSA SSH key with 521 bits:
 ```
 ssh-keygen -t ecdsa -b 521 -C "muhammadusman2478910@gmail.com"
 ```
 
-# List global Git configurations:
+## List global Git configurations:
 ```
 git config --global --list
 ```
