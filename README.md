@@ -133,6 +133,9 @@ ssh-add -D
 ```
 
 
+
+
+
 #  1. Question
 
 **Can you add multiple git remote origins, from different github accounts within the same local machine, for push and pull purposes?**
@@ -176,7 +179,7 @@ origin	git@github.com:musmantechninja/myfirstrepo.git (push)
 
 2. Then run below command, and then look for the lines similar to the one mentioned below, that says, the key offered and accepted while making the SSH keys,
 
-###### Note: The SSH key, offered and accepted should be the one assosiated with the your respective github account that you created while generting the ssh-key pair.
+##### Note: The SSH key, offered and accepted should be the one assosiated with the your respective github account that you created while generting the ssh-key pair.
 
 ```
 ssh -vT git@github.com
@@ -190,7 +193,7 @@ debug1: Server accepts key: /Users/muhammadusman/.ssh/id_ecdsa ECDSA SHA256:FAGc
 
 
 
-##Solution
+###Solution
 
 
 I have to add the ssh identity of my respective github account's private key and then need to push.
@@ -216,7 +219,7 @@ eval "$(ssh-agent -s)"
 
 **Why can't I add the similar pub key to the differnt account to avoid the error mentioned in first question?**
 
-You can't use the same pub key for the diffrent github account.
+You can't use the same pub key for the diffrent github account, as it will give error that key is already in use.
 
 
  
