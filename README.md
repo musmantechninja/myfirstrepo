@@ -139,7 +139,7 @@ ssh-add -D
 
 The answer is YES, you can add it but following the below steps.
 
-If you  get error similar to the below one while checking the remote origin, pushing/pulling the git to remote repo, following the below command,
+If you  get error similar as below one, while checking the remote origin, pushing/pulling the git to remote repo, following the below command,
 
 
 ```
