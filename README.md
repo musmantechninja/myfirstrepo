@@ -208,7 +208,7 @@ and then use below command,
 git remote git@github.com:musmantechninja/myfirstrepo.git main
 
 
-If you still face the same issue, run below to restart the ssh-agent and then add the ssh-identity again and then push it again.
+##### Note: If you still face the same issue, run below to restart the ssh-agent and then add the ssh-identity again and then push it again.
 
 ```
 eval "$(ssh-agent -s)"
