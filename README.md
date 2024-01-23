@@ -258,10 +258,11 @@ git branch -vv
 
 ```
 
-```
+##### Output 
+
 * main       c9f8b2a [origin/main] Latest commit on main
   feature-branch   2a1b3c4 [origin/feature-branch: behind 3] Feature branch changes
-```
+
 
 In this example output:
 
@@ -273,17 +274,18 @@ feature-branch is another local branch, and it is tracking the remote branch ori
 [origin/feature-branch: behind 3] indicates that the local feature-branch is behind the remote by 3 commits.
 This command is useful for quickly checking the status of local branches in relation to their remote counterparts, including information about commits and tracking status.
 
-## To rename the most recent commit before pushing to the remote.
+# To rename the most recent commit before pushing to the remote.
+```
 git commit --amend -m "something-changed"    
-
+```
 
 ### Can we change the git commit after the push to the remote?
 
 Yes, we can, suppose you need to ammend the commit after the push.
 
-
+```
 git commit --amend -m "something-changed"
-
+```
 
 ### Solution:
 
