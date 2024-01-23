@@ -214,7 +214,7 @@ git remote git@github.com:musmantechninja/myfirstrepo.git main
 eval "$(ssh-agent -s)"
 ```
 
-# 2. FAQ
+# 2. Question
 
 
 **Why can't I add the similar pub key to the differnt account to avoid the error mentioned in first question?**
