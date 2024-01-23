@@ -273,9 +273,136 @@ feature-branch is another local branch, and it is tracking the remote branch ori
 [origin/feature-branch: behind 3] indicates that the local feature-branch is behind the remote by 3 commits.
 This command is useful for quickly checking the status of local branches in relation to their remote counterparts, including information about commits and tracking status.
 
+## To rename the most recent commit before pushing to the remote.
+git commit --amend -m "something-changed"    
 
 
-#  1. Question
+### Can we change the git commit after the push to the remote?
+
+Yes, we can, suppose you need to ammend the commit after the push.
+
+
+git commit --amend -m "something-changed"
+
+
+### Solution:
+
+Create a New Commit to Join the Histories:
+
+```
+git fetch origin main
+```
+
+Then, create a new commit to merge the histories:
+
+
+```
+git merge --allow-unrelated-histories -m "Merge unrelated histories" origin/main
+
+```
+
+This will create a new merge commit that connects the histories.
+
+
+##### In Action:
+
+```
+muhammadusman@FQMQWK6N65 test % git commit --amend -m "commit renamed from first commit"
+
+[main e1580cf] commit renamed from first commit
+ Date: Tue Jan 23 13:19:42 2024 +0500
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+muhammadusman@FQMQWK6N65 test % git status 
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+nothing to commit, working tree clean
+
+
+**muhammadusman@FQMQWK6N65 test % git log --oneline**
+
+e1580cf (HEAD -> main) commit renamed from first commit
+muhammadusman@FQMQWK6N65 test % 
+muhammadusman@FQMQWK6N65 test % 
+
+muhammadusman@FQMQWK6N65 test % git push
+
+To github.com:musmantechninja/test.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:musmantechninja/test.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+muhammadusman@FQMQWK6N65 test % git pull
+
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+muhammadusman@FQMQWK6N65 test % git pull origin main --no-rebase
+From github.com:musmantechninja/test
+ * branch            main       -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+
+
+
+muhammadusman@FQMQWK6N65 test % git fetch origin main
+
+From github.com:musmantechninja/test
+ * branch            main       -> FETCH_HEAD
+muhammadusman@FQMQWK6N65 test % git branch 
+* main
+muhammadusman@FQMQWK6N65 test % 
+muhammadusman@FQMQWK6N65 test % 
+
+
+
+muhammadusman@FQMQWK6N65 test % git merge --allow-unrelated-histories -m "Merge unrelated histories" origin/main**
+
+Merge made by the 'ort' strategy.
+
+muhammadusman@FQMQWK6N65 test % git log --oneline
+
+1dba14d (HEAD -> main) Merge unrelated histories
+e1580cf commit renamed from first commit
+ea6e785 (origin/main) first commit
+muhammadusman@FQMQWK6N65 test % git push 
+Enumerating objects: 2, done.
+Counting objects: 100% (2/2), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 302 bytes | 302.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To github.com:musmantechninja/test.git
+   ea6e785..1dba14d  main -> main
+muhammadusman@FQMQWK6N65 test % git log --oneline
+1dba14d (HEAD -> main, origin/main) Merge unrelated histories
+e1580cf commit renamed from first commit
+ea6e785 first commit
+
+```
+
+
+
+                      ### FAQs ###
+
+
+###  1. Question
 
 **Can you add multiple git remote origins, from different github accounts within the same local machine, for push and pull purposes?**
 
@@ -303,7 +430,7 @@ and the repository exists.
 
 ```
 
-## Trouble-Shooting steps,
+#### Trouble-Shooting steps,
 
 1. Check the remote origin following the below command and note down the remote origin, output.
 
@@ -353,7 +480,7 @@ git remote git@github.com:musmantechninja/myfirstrepo.git main
 eval "$(ssh-agent -s)"
 ```
 
-# 2. Question
+### 2. Question
 
 
 **Why can't I add the similar pub key to the differnt account to avoid the error mentioned in first question?**
