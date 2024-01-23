@@ -132,7 +132,146 @@ ssh-add -d /path/to/private-key
 ssh-add -D
 ```
 
+## List Local Branches:
 
+```
+git branch
+```
+Use this command to list all local branches in your repository.
+
+## List Remote Branches:
+
+```
+git branch -r
+```
+Use this command to list remote branches.
+
+
+## List both local and remote branches.
+```
+branch -a
+```
+
+The git **branch -a** command is used to list all branches in a Git repository, including both local and remote branches.
+
+
+
+## Create a New Branch:
+
+
+```
+git branch new-feature
+```
+
+Use this command to create a new branch named "new-feature."
+
+## Create and Switch to a New Branch:
+
+
+```
+git checkout -b bug-fix
+```
+Use this command to create and switch to a new branch named "bug-fix."
+
+## Rename a Branch:
+
+```
+git branch -m old-branch-name new-branch-name
+```
+Use this command to rename an existing branch.
+
+## Delete a Local Branch:
+
+```
+git branch -d obsolete-branch
+```
+Use this command to delete a local branch after merging.
+
+## Force Delete a Branch:
+
+
+```
+git branch -D feature-to-delete
+```
+Use this command to forcefully delete a branch, even if changes are not merged.
+
+## Show Branches with Last Commit Info:
+
+```
+git branch -v
+```
+Use this command to see a list of branches along with the last commit information.
+
+## Show Merged and Unmerged Branches:
+
+```
+git branch --merged
+```
+
+```
+git branch --no-merged
+```
+Use these commands to show branches that are either merged or not merged into the current branch.
+
+## Set Upstream Branch:
+
+
+```
+git branch -u origin/main
+```
+Use this command to set the upstream branch, linking the current local branch to a remote branch.
+
+
+## Show Current Branch:
+
+
+```
+git branch --show-current
+```
+
+Use this command to display the name of the currently checked-out branch.
+
+## Create a New Branch from a Specific Commit:
+
+
+```
+git branch new-branch-name <commit-hash>
+```
+Use this command to create a new branch starting from a specific commit.
+
+
+
+## Show the Upstream Branch:
+
+
+```
+git branch -vv
+```
+Use this command to display local branches along with their upstream tracking.
+
+
+#####Example:
+Suppose you have a local branch named main, and it is tracking a remote branch called origin/main. You can use the following command to see the upstream tracking relationship:
+
+```
+git branch -vv
+
+```
+
+```
+* main       c9f8b2a [origin/main] Latest commit on main
+  feature-branch   2a1b3c4 [origin/feature-branch: behind 3] Feature branch changes
+```
+
+In this example output:
+
+The * main line indicates that you are currently on the main branch.
+c9f8b2a is the commit hash of the latest commit on the main branch.
+[origin/main] indicates that main is tracking the remote branch named origin/main.
+feature-branch is another local branch, and it is tracking the remote branch origin/feature-branch.
+2a1b3c4 is the commit hash of the latest commit on the feature-branch.
+[origin/feature-branch: behind 3] indicates that the local feature-branch is behind the remote by 3 commits.
+This command is useful for quickly checking the status of local branches in relation to their remote counterparts, including information about commits and tracking status.
 
 
 
