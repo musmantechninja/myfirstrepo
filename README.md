@@ -250,7 +250,7 @@ git branch -vv
 Use this command to display local branches along with their upstream tracking.
 
 
-#####Example:
+###### Example:
 Suppose you have a local branch named main, and it is tracking a remote branch called origin/main. You can use the following command to see the upstream tracking relationship:
 
 ```
